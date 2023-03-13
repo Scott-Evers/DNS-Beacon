@@ -1,0 +1,6 @@
+interval: 5
+route53_zone_id:
+aws_region:
+aws_key:
+aws_secret:
+host_name:

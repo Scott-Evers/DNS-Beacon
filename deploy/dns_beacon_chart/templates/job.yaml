@@ -1,0 +1,45 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: dns-beacon
+spec:
+  schedule: "*/{{ .Values.interval }} * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: dns-beacon
+        spec:
+          containers:
+          - name: dns-beacon
+            image: scottaevers/dns_beacon:latest
+            imagePullPolicy: Always
+            env:
+              - name: ZONE_ID
+                valueFrom:
+                  secretKeyRef:
+                    name: env-vars
+                    key: zone_id
+              - name: AWS_REGION
+                valueFrom:
+                  secretKeyRef:
+                    name: env-vars
+                    key: aws_region
+              - name: AWS_ACCESS_KEY_ID
+                valueFrom:
+                  secretKeyRef:
+                    name: env-vars
+                    key: aws_key
+              - name: AWS_SECRET_ACCESS_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: env-vars
+                    key: aws_secret
+              - name: HOST_NAME
+                valueFrom:
+                  secretKeyRef:
+                    name: env-vars
+                    key: host_name
+          restartPolicy: OnFailure

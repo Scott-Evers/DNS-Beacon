@@ -1,0 +1,9 @@
+apiVersion: v2
+name: dns_beacon
+description: Updates an AWS Route53 record based on the current egress IP
+
+type: application
+
+version: 1.0.0
+
+appVersion: "1.0.0"

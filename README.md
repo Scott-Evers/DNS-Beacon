@@ -14,4 +14,8 @@
   docker push {$DOCKERHUB_USER}/dns_beacon
   ```
 
-2. Use Helm to deploy to Kubernetes
+1. Use Helm to deploy to Kubernetes
+  ```fish
+  helm upgrade --install --namespace dns-beacon --set route53_zone_id=val --set aws_region=us-east-1 --set aws_key=val --set aws_secret=val --set interval=1 --set host_name=fqdn dns-beacon .
+  ```
+

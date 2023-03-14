@@ -1,4 +1,4 @@
-name: 'Build and Deploy to Kubernetes Cluster'
+name: "Build and Deploy to Kubernetes Cluster"
 
 # triggers
 on:
@@ -12,9 +12,9 @@ on:
 
 jobs:
   image_build_publish:
-    name: 'Build and publish image to Dockerhub'
-    runs-on: docker:dind
-    
+    name: "Build and publish image to Dockerhub"
+    runs-on: ubuntu-latest
+
     steps:
       - name: "Debug info"
         run: pwd

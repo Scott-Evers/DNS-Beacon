@@ -35,8 +35,9 @@ jobs:
   helm_deploy:
     name: "Deploy to Kubernetes using Helm"
     runs-on: [self-hosted, home-kube]
-
+    container: alpine/helm
     steps:
       - name: "Local deploy"
         run: |
           echo "hello world"
+          helm version

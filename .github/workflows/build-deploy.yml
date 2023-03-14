@@ -18,7 +18,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: "Make script executable"
-        run: chmod +x ./.github/workflows/docker.sh
       - name: "Docker Build and Publish"
-        run: ./.github/workflows/docker.sh
+        run: |
+          echo "Working Directory"
+          pwd
+          echo "Directory Contents"
+          ls -alr
+          docker build -t ${{ vars.DOCKERHUB_USER }}/dns_beacon -f deploy/Dockerfile .
+          docker push ${{ vars.DOCKERHUB_USER }}/dns_beacon

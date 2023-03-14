@@ -1,0 +1,20 @@
+name: 'Build and Deploy to Kubernetes Cluster'
+
+# triggers
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  image_build_publish:
+    name: 'Build and publish image to Dockerhub'
+    runs-on: docker:dind
+    
+    steps:
+      - name: "Debug info"
+        run: pwd

@@ -24,5 +24,6 @@ jobs:
           pwd
           echo "Directory Contents"
           ls -alr
+          docker login -u ${{ vars.DOCKERHUB_USER }} -p ${{ vars.DOCKERHUB_PWD }}
           docker build -t ${{ vars.DOCKERHUB_USER }}/dns_beacon -f deploy/Dockerfile .
           docker push ${{ vars.DOCKERHUB_USER }}/dns_beacon

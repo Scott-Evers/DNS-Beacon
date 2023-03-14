@@ -19,11 +19,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: "Docker Build and Publish"
+        with:
+          DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
+          DOCKERHUB_PWD: ${{ secrets.DOCKERHUB_PWD }}
         run: |
           echo "Working Directory"
           pwd
           echo "Directory Contents"
           ls -alr
-          docker login -u ${{ vars.DOCKERHUB_USER }} -p ${{ secrets.DOCKERHUB_PWD }}
-          docker build -t ${{ vars.DOCKERHUB_USER }}/dns_beacon -f deploy/Dockerfile .
-          docker push ${{ vars.DOCKERHUB_USER }}/dns_beacon
+          echo "Dockerhub user: ${DOCKERHUB_USER}"
+          docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PWD
+          docker build -t $DOCKERHUB_USER/dns_beacon -f deploy/Dockerfile .
+          docker push $DOCKERHUB_USER/dns_beacon

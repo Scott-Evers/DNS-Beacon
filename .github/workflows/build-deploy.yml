@@ -31,3 +31,12 @@ jobs:
           docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PWD
           docker build -t $DOCKERHUB_USER/dns_beacon -f deploy/Dockerfile .
           docker push $DOCKERHUB_USER/dns_beacon
+
+  helm_deploy:
+    name: "Deploy to Kubernetes using Helm"
+    runs-on: [self-hosted, home-kube]
+
+    steps:
+      - name: "Local deploy"
+        run: |
+          echo "hello world"

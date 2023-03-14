@@ -5,3 +5,5 @@ pwd
 
 echo "Directory Contents"
 ls -alr
+
+docker --version

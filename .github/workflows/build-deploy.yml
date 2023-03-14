@@ -19,6 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: "Make script executable"
-        run: chmod +x ./.github/workflows/build-deploy.yml
+        run: chmod +x ./.github/workflows/docker.sh
       - name: "Docker Build and Publish"
-        run: ./.github/workflows/build-deploy.yml
+        run: ./.github/workflows/docker.sh

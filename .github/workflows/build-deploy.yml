@@ -16,5 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: "Debug info"
+      - name: pwd
         run: pwd
+      - name: ls
+        run: ls -al

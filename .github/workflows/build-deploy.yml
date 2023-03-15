@@ -35,10 +35,11 @@ jobs:
   chart_build_publish:
     name: "Build and publish chart to Dockerhub"
     runs-on: ubuntu-latest
-    container: alpine/helm
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Install helm
+        run: snap install helm --classic
       - name: "Package and publish"
         env:
           DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}

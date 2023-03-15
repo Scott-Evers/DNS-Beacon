@@ -32,12 +32,12 @@ jobs:
           docker build -t $DOCKERHUB_USER/dns_beacon -f deploy/Dockerfile .
           docker push $DOCKERHUB_USER/dns_beacon
 
-  helm_deploy:
-    name: "Deploy to Kubernetes using Helm"
-    runs-on: [self-hosted, home-kube]
+  chart_build_publish:
+    name: "Build and publish chart to Dockerhub"
+    runs-on: ubuntu-latest
     container: alpine/helm
     steps:
-      - name: "Local deploy"
+      - name: "Debug info"
         run: |
           echo "hello world"
           helm version

@@ -39,7 +39,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install helm
-        run: snap install helm --classic
+        run: sudo snap install helm --classic
       - name: "Package and publish"
         env:
           DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
